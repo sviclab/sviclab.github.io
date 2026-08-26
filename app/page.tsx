@@ -1,6 +1,26 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
+
+const themeEvent = 'svic-theme-change';
+
+function subscribeToTheme(onStoreChange: () => void) {
+  window.addEventListener('storage', onStoreChange);
+  window.addEventListener(themeEvent, onStoreChange);
+
+  return () => {
+    window.removeEventListener('storage', onStoreChange);
+    window.removeEventListener(themeEvent, onStoreChange);
+  };
+}
+
+function getThemeSnapshot() {
+  return localStorage.getItem('svic-theme') === 'dark';
+}
+
+function getServerThemeSnapshot() {
+  return false;
+}
 
 const international = [
   {year:'2025',title:'Experimental study on seismic behaviors of CFS partition walls with varied construction practices using shake table tests',venue:'Journal of Building Engineering',doi:'10.1016/j.jobe.2025.114343'},
@@ -17,9 +37,16 @@ const domestic = [
 ];
 
 export default function Home(){
-  const [dark,setDark]=useState(false);
-  useEffect(()=>setDark(localStorage.getItem('svic-theme')==='dark'),[]);
-  function toggle(){setDark(v=>{localStorage.setItem('svic-theme',v?'light':'dark');return !v})}
+  const dark = useSyncExternalStore(
+    subscribeToTheme,
+    getThemeSnapshot,
+    getServerThemeSnapshot,
+  );
+
+  function toggle(){
+    localStorage.setItem('svic-theme', dark ? 'light' : 'dark');
+    window.dispatchEvent(new Event(themeEvent));
+  }
   return <div className={dark?'site dark':'site'}>
     <header className="topbar"><nav className="topbar-inner">
       <a className="brand" href="#top">SViC Lab</a>
