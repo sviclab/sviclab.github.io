@@ -3,6 +3,7 @@ import Link from 'next/link';
 import ThemeToggle from './components/ThemeToggle';
 import './globals.css';
 import './theme.css';
+import './people.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://sviclab.github.io'),
