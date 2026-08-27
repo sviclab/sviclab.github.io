@@ -179,6 +179,21 @@
   vertical-align: 1px;
 }
 
+.publication-list {
+  border-top: 0;
+}
+
+.publication-list .record {
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 0;
+}
+
+.publication-list .record:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
 .toolbar input,
 .toolbar select {
   height: 38px;

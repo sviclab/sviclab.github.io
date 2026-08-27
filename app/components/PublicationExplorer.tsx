@@ -29,7 +29,7 @@ export default function PublicationExplorer({ publications }: { publications: Pu
         {options.map(([value, label]) => <option value={value} key={value}>{label}</option>)}
       </select>
     </div>
-    <div className="record-list">
+    <div className="record-list publication-list">
       {shown.map((publication, index) => <article className="record" key={publication.id}>
         <div className="record-side">{index === 0 || shown[index - 1].year !== publication.year ? publication.year : ''}</div>
         <div>
