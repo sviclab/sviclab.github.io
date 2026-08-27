@@ -70,13 +70,6 @@
   margin-top: 0;
 }
 
-.member-degrees .thesis-link,
-.degree-list .thesis-link {
-  display: block;
-  margin-top: 5px;
-  color: var(--ink);
-}
-
 .member-email {
   margin: 3px 0 0 !important;
   color: var(--muted);
@@ -92,18 +85,41 @@
 }
 
 .thesis-entry p {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
   margin: 0;
   color: var(--muted);
   font-size: 12px;
   line-height: 1.55;
 }
 
-.thesis-entry p span {
+.thesis-kind-link {
+  flex: 0 0 auto;
+  padding: 1px 5px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--white);
+  color: var(--muted);
+  font-size: 9px;
   font-style: normal;
+  line-height: 1.45;
+  letter-spacing: .03em;
+}
+
+.thesis-kind-link:hover {
+  border-color: var(--ink);
+  color: var(--ink);
 }
 
 .thesis-entry em {
   color: var(--ink);
+}
+
+[data-theme='dark'] .thesis-kind-link {
+  background: #202020;
+  border-color: #4a4a47;
+  color: #d5d5d1;
 }
 
 .patent-record {

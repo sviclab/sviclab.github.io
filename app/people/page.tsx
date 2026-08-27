@@ -86,8 +86,10 @@ const alumniContact: Record<string, { email: string; image: string }> = {
 
 function ThesisEntry({ thesis }: { thesis: Thesis }) {
   return <div className="thesis-entry">
-    <p><span>{thesis.kind}.</span> <em>{thesis.title}</em></p>
-    <a className="thesis-link" href={thesis.url} target="_blank" rel="noreferrer">Full text</a>
+    <p>
+      <a className="thesis-kind-link" href={thesis.url} target="_blank" rel="noreferrer">{thesis.kind}</a>
+      <em>{thesis.title}</em>
+    </p>
   </div>;
 }
 
