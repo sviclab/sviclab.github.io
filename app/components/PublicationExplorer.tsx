@@ -5,6 +5,15 @@ import { useMemo, useState } from 'react';
 type Publication = { id: string; year: number | null; title: string; journal: string; section: string; index: string; doi: string; link: string; authors?: string };
 const options = [['all', 'All journals'], ['international', 'International journals'], ['domestic', 'Domestic journals'], ['SCI(E)', 'SCI(E)'], ['SCOPUS', 'SCOPUS'], ['KCI', 'KCI']];
 
+function citationAuthors(authors: string) {
+  return authors.split(', ').map(author => {
+    const parts = author.trim().split(' ');
+    const family = parts.pop();
+    const initials = parts.map(part => part.split('-').map(name => `${name.charAt(0).toUpperCase()}.`).join('-')).join(' ');
+    return `${family}, ${initials}`;
+  }).join(', ');
+}
+
 export default function PublicationExplorer({ publications }: { publications: Publication[] }) {
   const [filter, setFilter] = useState('all');
   const shown = useMemo(() => publications.filter(publication => {
@@ -25,7 +34,7 @@ export default function PublicationExplorer({ publications }: { publications: Pu
         <div className="record-side">{index === 0 || shown[index - 1].year !== publication.year ? publication.year : ''}</div>
         <div>
           <h3>{publication.title}</h3>
-          {publication.authors && <p className="record-authors">{publication.authors}</p>}
+          {publication.authors && <p className="record-authors">{citationAuthors(publication.authors)}</p>}
           <p className="record-meta"><em>{publication.journal}</em> <span className={`badge publication-index ${publication.index === 'SCI(E)' ? 'sci' : publication.index.toLowerCase()}`}>{publication.index}</span></p>
           <a className="doi-link" href={publication.link} target="_blank" rel="noreferrer">{publication.doi ? 'DOI' : 'Article record'}</a>
         </div>
