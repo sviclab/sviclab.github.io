@@ -39,7 +39,7 @@ export default function PublicationExplorer({ publications }: { publications: Pu
         <div className="record-side">{publication.year}</div>
         <div>
           <h3>{publication.title}</h3>
-          <p className="record-authors">{publication.authors || (publication.authorCount === '1' ? 'Hyung-Joon Kim' : `Hyung-Joon Kim and ${Number(publication.authorCount) - 1} co-author${publication.authorCount === '2' ? '' : 's'}`)}</p>
+          {publication.authors && <p className="record-authors">{publication.authors}</p>}
           <p className="record-meta"><em>{publication.journal}</em> <span className={`badge publication-index ${publication.index === 'SCI(E)' ? 'sci' : publication.index.toLowerCase()}`}>{publication.index}</span></p>
           <a className="doi-link" href={publication.link} target="_blank" rel="noreferrer">{publication.doi ? 'DOI' : 'Article record'}</a>
         </div>
