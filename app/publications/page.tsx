@@ -9,8 +9,17 @@ import PublicationExplorer from '../components/PublicationExplorer';
 
 export const metadata: Metadata = { title: 'Publications | SViC Lab', description: 'International and domestic journal articles from SViC Lab.' };
 
+const conferencePaperIds = new Set([
+  'international-9',
+  'international-10',
+  'international-11',
+  'international-12',
+  'international-19',
+  'international-26',
+]);
+
 export default function Page() {
-  const publications = data.publications.map(publication => ({
+  const publications = data.publications.filter(publication => !conferencePaperIds.has(publication.id)).map(publication => ({
     ...publication,
     title: publication.section === 'domestic' ? domesticTitles[publication.number] || publication.title : publication.title,
     journal: publication.section === 'domestic' ? domesticJournals[publication.journal] || publication.journal : internationalJournals[publication.journal] || publication.journal,
