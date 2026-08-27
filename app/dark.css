@@ -1,0 +1,95 @@
+[data-theme='dark'] .lab-logo {
+  filter: grayscale(1) invert(1) brightness(1.7);
+  opacity: 0.92;
+}
+
+.button,
+.theme-toggle,
+.toolbar input,
+.toolbar select,
+.profile-links a,
+.doi-link,
+.text-link {
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, opacity 160ms ease;
+}
+
+.button:hover {
+  opacity: 0.82;
+}
+
+.theme-toggle {
+  min-height: 30px;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.theme-toggle:hover {
+  color: var(--ink);
+  border-color: var(--muted);
+}
+
+[data-theme='dark'] .button {
+  color: #151515;
+  background: #ededeb;
+}
+
+[data-theme='dark'] .button:hover {
+  color: #fff;
+  background: #444441;
+  opacity: 1;
+}
+
+[data-theme='dark'] .text-link,
+[data-theme='dark'] .doi-link,
+[data-theme='dark'] .profile-links a {
+  color: #d5d5d1;
+  border-color: #62625e;
+}
+
+[data-theme='dark'] .text-link:hover,
+[data-theme='dark'] .doi-link:hover,
+[data-theme='dark'] .profile-links a:hover {
+  color: #fff;
+  border-color: #b8b8b3;
+}
+
+[data-theme='dark'] .toolbar input,
+[data-theme='dark'] .toolbar select {
+  color: #ededeb;
+  background: #202020;
+  border-color: #444441;
+}
+
+[data-theme='dark'] .toolbar input::placeholder {
+  color: #858581;
+}
+
+[data-theme='dark'] .toolbar input:focus,
+[data-theme='dark'] .toolbar select:focus,
+[data-theme='dark'] .theme-toggle:focus-visible,
+[data-theme='dark'] a:focus-visible {
+  outline: 2px solid #b8b8b3;
+  outline-offset: 3px;
+}
+
+[data-theme='dark'] .badge,
+[data-theme='dark'] .badge.sci,
+[data-theme='dark'] .badge.scopus,
+[data-theme='dark'] .badge.kci {
+  color: #d5d5d1;
+  background: #242424;
+  border-color: #4a4a47;
+}
+
+[data-theme='dark'] .patent-certificate {
+  background: #2a2a29;
+  border-color: #4a4a47;
+}
+
+@media (max-width: 800px) {
+  .theme-toggle {
+    padding: 4px 10px;
+    border: 1px solid var(--line);
+  }
+}
