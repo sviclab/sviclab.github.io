@@ -3,7 +3,7 @@
 import { useMemo, useState } from 'react';
 
 type Publication = { id: string; year: number | null; title: string; journal: string; section: string; index: string; doi: string; link: string; authors?: string };
-const options = [['all', 'All journals'], ['international', 'International journals'], ['domestic', 'Domestic journals'], ['SCI(E)', 'SCI(E)'], ['SCOPUS', 'SCOPUS'], ['KCI', 'KCI']];
+const options = [['all', 'All journals'], ['SCI(E)', 'SCI(E)'], ['SCOPUS', 'SCOPUS'], ['KCI', 'KCI']];
 
 function citationAuthors(authors: string) {
   return authors.split(', ').map(author => {
@@ -18,7 +18,6 @@ export default function PublicationExplorer({ publications }: { publications: Pu
   const [filter, setFilter] = useState('all');
   const shown = useMemo(() => publications.filter(publication => {
     if (filter === 'all') return true;
-    if (filter === 'international' || filter === 'domestic') return publication.section === filter;
     return publication.index === filter;
   }), [publications, filter]);
 
