@@ -30,15 +30,17 @@ export default function PublicationExplorer({ publications }: { publications: Pu
       </select>
     </div>
     <div className="record-list publication-list">
-      {shown.map((publication, index) => <article className="record" key={publication.id}>
-        <div className="record-side">{index === 0 || shown[index - 1].year !== publication.year ? publication.year : ''}</div>
+      {shown.map((publication, index) => {
+        const startsYear = index === 0 || shown[index - 1].year !== publication.year;
+        return <article className={`record${startsYear ? ' year-start' : ''}`} key={publication.id}>
+        <div className="record-side">{startsYear ? publication.year : ''}</div>
         <div>
           <h3>{publication.title}</h3>
           {publication.authors && <p className="record-authors">{citationAuthors(publication.authors)}</p>}
           <p className="record-meta"><em>{publication.journal}</em> <span className={`badge publication-index ${publication.index === 'SCI(E)' ? 'sci' : publication.index.toLowerCase()}`}>{publication.index}</span></p>
           <a className="doi-link" href={publication.link} target="_blank" rel="noreferrer">{publication.doi ? 'DOI' : 'Article record'}</a>
         </div>
-      </article>)}
+      </article>})}
     </div>
   </>;
 }
