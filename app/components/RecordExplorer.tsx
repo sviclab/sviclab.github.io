@@ -1,4 +1,41 @@
 'use client';
-import {useMemo,useState} from 'react';
-type RecordItem={id:string;side:string;title:string;meta:string;detail?:string;group?:string;image?:string};
-export default function RecordExplorer({records,groups,placeholder}:{records:RecordItem[];groups?:string[];placeholder:string}){const[q,setQ]=useState('');const[g,setG]=useState('all');const shown=useMemo(()=>records.filter(r=>(g==='all'||r.group===g)&&(`${r.title} ${r.meta} ${r.detail||''}`.toLowerCase().includes(q.toLowerCase()))),[records,q,g]);return <><div className="toolbar"><input aria-label="Search records" placeholder={placeholder} value={q} onChange={e=>setQ(e.target.value)}/>{groups&&<select aria-label="Category" value={g} onChange={e=>setG(e.target.value)}><option value="all">All categories</option>{groups.map(x=><option value={x} key={x}>{x}</option>)}</select>}</div><div className="record-list">{shown.map(r=><article className={`record${r.image?' patent-record':''}`} key={r.id}><div className="record-side">{r.side}</div>{r.image&&<a className="patent-certificate" href={r.image} target="_blank" rel="noreferrer" aria-label={`Open certificate for ${r.title}`}><img src={r.image} alt="Patent registration certificate"/></a>}<div>{r.group&&<div className="badges"><span className="badge">{r.group}</span></div>}<h3>{r.title}</h3><p className="record-meta">{r.meta}</p>{r.detail&&<p className="record-meta">{r.detail}</p>}</div></article>)}{shown.length===0&&<p className="empty">No records found.</p>}</div></>}
+
+import { useMemo, useState } from 'react';
+
+type RecordItem = {
+  id: string;
+  side: string;
+  title: string;
+  meta: string;
+  detail?: string;
+  group?: string;
+  image?: string;
+};
+
+export default function RecordExplorer({ records, groups }: { records: RecordItem[]; groups?: string[]; placeholder?: string }) {
+  const [group, setGroup] = useState('all');
+  const shown = useMemo(() => records.filter(record => group === 'all' || record.group === group), [records, group]);
+
+  return <>
+    {groups && <div className="toolbar">
+      <select aria-label="Category" value={group} onChange={event => setGroup(event.target.value)}>
+        <option value="all">All categories</option>
+        {groups.map(item => <option value={item} key={item}>{item}</option>)}
+      </select>
+    </div>}
+    <div className="record-list">
+      {shown.map(record => <article className={`record${record.image ? ' patent-record' : ''}`} key={record.id}>
+        <div className="record-side">{record.side}</div>
+        {record.image && <a className="patent-certificate" href={record.image} target="_blank" rel="noreferrer" aria-label={`Open certificate for ${record.title}`}>
+          <img src={record.image} alt="Patent registration certificate" />
+        </a>}
+        <div>
+          {record.group && <div className="badges"><span className="badge">{record.group}</span></div>}
+          <h3>{record.title}</h3>
+          <p className="record-meta">{record.meta}</p>
+          {record.detail && <p className="record-meta">{record.detail}</p>}
+        </div>
+      </article>)}
+    </div>
+  </>;
+}
