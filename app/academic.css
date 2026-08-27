@@ -129,7 +129,19 @@
 }
 
 .toolbar {
+  justify-content: flex-end;
   margin-bottom: 20px;
+}
+
+.record-authors {
+  margin: 0 0 1px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.publication-index {
+  margin-left: 5px;
+  vertical-align: 1px;
 }
 
 .toolbar input,

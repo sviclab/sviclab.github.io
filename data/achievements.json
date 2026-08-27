@@ -1,10 +1,10 @@
 {
-  "sourceUpdated": "2025-12-31",
+  "sourceUpdated": "2026-08-27",
   "counts": {
     "theses": 2,
-    "publications": 76,
+    "publications": 77,
     "internationalPublications": 41,
-    "domesticPublications": 35,
+    "domesticPublications": 36,
     "patents": 24,
     "conferences": 103,
     "internationalConferences": 25,
@@ -762,6 +762,24 @@
       "doi": "10.1061/(ASCE)0733-9445(2008)134:1(96)",
       "link": "https://doi.org/10.1061/(ASCE)0733-9445(2008)134:1(96)",
       "linkLabel": "DOI 10.1061/(ASCE)0733-9445(2008)134:1(96)"
+    },
+    {
+      "id": "domestic-36",
+      "number": 36,
+      "section": "domestic",
+      "year": 2026,
+      "title": "인접 물체와 충돌로 인한 의료용 침대의 지진응답",
+      "journal": "한국방재학회논문집",
+      "publisher": "한국방재학회",
+      "index": "KCI",
+      "authorCount": "2",
+      "role": "교신저자",
+      "issn": "1738-2424",
+      "funder": "",
+      "program": "",
+      "doi": "10.9798/KOSHAM.2026.26.1.145",
+      "link": "https://doi.org/10.9798/KOSHAM.2026.26.1.145",
+      "linkLabel": "DOI"
     },
     {
       "id": "domestic-35",

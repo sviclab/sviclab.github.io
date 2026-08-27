@@ -14,6 +14,8 @@ type Publication = {
   doi: string;
   link: string;
   linkLabel: string;
+  authors?: string;
+  authorCount: string;
 };
 
 export default function PublicationExplorer({ publications }: { publications: Publication[] }) {
@@ -36,10 +38,9 @@ export default function PublicationExplorer({ publications }: { publications: Pu
       {shown.map(publication => <article className="record" key={publication.id}>
         <div className="record-side">{publication.year}</div>
         <div>
-          <div className="badges"><span className={`badge ${publication.index === 'SCI(E)' ? 'sci' : publication.index.toLowerCase()}`}>{publication.index}</span></div>
           <h3>{publication.title}</h3>
-          <p className="record-meta">{publication.journal}{publication.publisher && ` · ${publication.publisher}`}{publication.issn && ` · ISSN ${publication.issn}`}</p>
-          {publication.funder && <p className="record-meta">Research support · {publication.funder}</p>}
+          <p className="record-authors">{publication.authors || (publication.authorCount === '1' ? 'Hyung-Joon Kim' : `Hyung-Joon Kim and ${Number(publication.authorCount) - 1} co-author${publication.authorCount === '2' ? '' : 's'}`)}</p>
+          <p className="record-meta"><em>{publication.journal}</em> <span className={`badge publication-index ${publication.index === 'SCI(E)' ? 'sci' : publication.index.toLowerCase()}`}>{publication.index}</span></p>
           <a className="doi-link" href={publication.link} target="_blank" rel="noreferrer">{publication.doi ? 'DOI' : 'Article record'}</a>
         </div>
       </article>)}

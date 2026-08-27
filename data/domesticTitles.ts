@@ -1,4 +1,5 @@
 export const domesticTitles:Record<number,string>={
+36:'Seismic Response of Medical Beds due to Collision with Adjacent Objects',
 35:'Analysis of Factors Affecting Regional Seismic Collapse Risk',
 34:'Seismic Retrofit Strategy for Low-Rise Structures Dominated by Higher Modes with Lateral–Torsional Behavior',
 33:'Probabilistic Seismic Performance of Pipe-Rack Concentrically Braced Frames by Seismic Design Parameters and Requirements',

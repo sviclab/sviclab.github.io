@@ -89,6 +89,7 @@
   padding: 4px;
   border: 1px solid var(--line);
   background: var(--white);
+  cursor: zoom-in;
 }
 
 .patent-certificate img {
@@ -97,6 +98,51 @@
   height: 106px;
   object-fit: contain;
   background: #fff;
+}
+
+.certificate-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  border: 0;
+  background: rgba(0, 0, 0, 0.78);
+  cursor: zoom-out;
+}
+
+.certificate-modal-content {
+  position: relative;
+  max-width: min(820px, 92vw);
+  max-height: 90vh;
+  padding: 12px;
+  background: var(--white);
+  box-shadow: 0 16px 60px rgba(0, 0, 0, 0.35);
+  cursor: default;
+}
+
+.certificate-modal-content img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(90vh - 24px);
+  object-fit: contain;
+  background: #fff;
+}
+
+.certificate-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #bbb;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  color: #222;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
 }
 
 @media (max-width: 800px) {
