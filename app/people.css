@@ -1,35 +1,57 @@
-.person-card {
+.member-directory {
+  border-top: 1px solid var(--line);
+}
+
+.member-row {
   display: grid;
-  grid-template-columns: 108px 1fr;
+  grid-template-columns: 96px 190px minmax(0, 1fr);
+  gap: 22px;
   align-items: start;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
 }
 
-.people-grid {
-  grid-template-columns: 1fr;
+.member-photo,
+.member-initials {
+  width: 96px;
+  height: 122px;
+  border: 1px solid var(--line);
 }
 
-.profile {
-  grid-template-columns: 108px 1fr;
-  gap: 18px;
-  align-items: start;
-}
-
-.profile > img {
-  width: 108px;
-  height: 138px;
-  aspect-ratio: auto;
+.member-photo {
   object-fit: cover;
 }
 
-.person-card > img {
-  width: 108px;
-  height: 138px;
-  aspect-ratio: auto;
-  object-fit: cover;
+.member-initials {
+  display: grid;
+  place-items: center;
+  background: var(--white);
+  color: var(--muted);
+  font-family: var(--serif);
+  font-size: 19px;
+  letter-spacing: .08em;
 }
 
-.person-card > div {
-  padding: 18px;
+.member-identity h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.member-role {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.member-affiliation {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .member-degrees {
@@ -53,19 +75,6 @@
   display: block;
   margin-top: 5px;
   color: var(--ink);
-}
-
-.alumni-list article {
-  grid-template-columns: 108px 1fr;
-  gap: 18px;
-  align-items: start;
-}
-
-.alumni-list article > img {
-  width: 108px;
-  height: 138px;
-  object-fit: cover;
-  border: 1px solid var(--line);
 }
 
 .member-email {
@@ -165,31 +174,21 @@
 }
 
 @media (max-width: 800px) {
-  .alumni-list article {
-    grid-template-columns: 92px 1fr;
-  }
-
-  .alumni-list article > img {
-    width: 92px;
-    height: 118px;
-  }
-  .profile {
-    grid-template-columns: 92px 1fr;
+  .member-row {
+    grid-template-columns: 82px minmax(0, 1fr);
     gap: 16px;
+    padding: 18px 0;
   }
 
-  .profile > img {
-    width: 92px;
-    height: 118px;
+  .member-photo,
+  .member-initials {
+    width: 82px;
+    height: 104px;
   }
 
-  .person-card {
-    grid-template-columns: 92px 1fr;
-  }
-
-  .person-card > img {
-    width: 92px;
-    height: 118px;
+  .member-row > .member-degrees {
+    grid-column: 1 / -1;
+    margin-top: 0;
   }
 
   .patent-record {

@@ -100,43 +100,57 @@ function EducationList({ education }: { education: Education[] }) {
   </ul>;
 }
 
+function Initials({ name }: { name: string }) {
+  return <div className="member-initials" aria-hidden="true">{name.split(/[- ]/).map(part => part[0]).join('')}</div>;
+}
+
+function MemberRow({ image, name, email, education, role }: { image?: string; name: string; email: string; education: Education[]; role?: string }) {
+  const hasPhoto = image && image !== '/assets/member-placeholder.png';
+  return <article className="member-row">
+    {hasPhoto ? <img className="member-photo" src={image} alt={name} /> : <Initials name={name} />}
+    <div className="member-identity">
+      {role && <p className="member-role">{role}</p>}
+      <h3>{name}</h3>
+      <p className="member-email"><a href={`mailto:${email}`}>{email}</a></p>
+    </div>
+    <EducationList education={education} />
+  </article>;
+}
+
 export default function Page() {
   return <>
     <PageHero eyebrow="People" title="Members" description="Current members and alumni of the Structural Vibration Control Laboratory." />
     <section className="content-section page-width">
-      <div className="profile">
-        <img src="/assets/hyung-joon-kim.jpg" alt="Professor Hyung-Joon Kim" />
-        <div>
-          <p className="eyebrow">Professor</p>
-          <h2>Hyung-Joon Kim</h2>
-          <p>Professor, Department of Architectural Engineering, University of Seoul</p>
-          <p className="member-email"><a href="mailto:hyungjoonkim@uos.ac.kr">hyungjoonkim@uos.ac.kr</a></p>
+      <div className="section-title"><h2>Faculty</h2></div>
+      <div className="member-directory faculty-directory">
+        <article className="member-row faculty-row">
+          <img className="member-photo" src="/assets/hyung-joon-kim.jpg" alt="Professor Hyung-Joon Kim" />
+          <div className="member-identity">
+            <p className="member-role">Professor</p>
+            <h3>Hyung-Joon Kim</h3>
+            <p className="member-affiliation">Department of Architectural Engineering<br />University of Seoul</p>
+            <p className="member-email"><a href="mailto:hyungjoonkim@uos.ac.kr">hyungjoonkim@uos.ac.kr</a></p>
+            <div className="profile-links">
+              <a href="https://orcid.org/0000-0002-4637-1558" target="_blank" rel="noreferrer">ORCID</a>
+              <a href="https://www.scopus.com/authid/detail.uri?authorId=52164005000" target="_blank" rel="noreferrer">SCOPUS</a>
+            </div>
+          </div>
           <EducationList education={[
             { degree: 'B.S., Architectural Engineering, Hanyang University' },
             { degree: 'M.S., Architectural Engineering, Hanyang University' },
             { degree: 'Ph.D., Civil Engineering, University of Toronto (2008)', thesis: { kind: 'Dissertation', title: 'Self-centering steel moment-resisting frames with energy dissipating systems', url: 'https://utoronto.scholaris.ca/items/1412ce8e-00c7-4f07-a9a1-97cb522356ef' } },
           ]} />
-          <div className="profile-links">
-            <a href="https://orcid.org/0000-0002-4637-1558" target="_blank" rel="noreferrer">ORCID</a>
-            <a href="https://www.scopus.com/authid/detail.uri?authorId=52164005000" target="_blank" rel="noreferrer">SCOPUS</a>
-          </div>
-        </div>
+        </article>
       </div>
 
       <div className="section-title section-break"><h2>Current members</h2></div>
-      <div className="people-grid">
-        {current.map(member => <article className="person-card" key={member.name}>
-          <img src={member.image} alt={member.name} />
-          <div><h3>{member.name}</h3><p className="member-email"><a href={`mailto:${member.email}`}>{member.email}</a></p><EducationList education={member.education} /></div>
-        </article>)}
+      <div className="member-directory">
+        {current.map(member => <MemberRow key={member.name} {...member} />)}
       </div>
 
       <div className="section-title section-break"><h2>Alumni</h2><p>{alumni.length} members</p></div>
-      <div className="alumni-list">
-        {alumni.map(member => <article key={member.name}>
-          <img src={alumniContact[member.name].image} alt={member.name} />
-          <div><h3>{member.name}</h3><p className="member-email"><a href={`mailto:${alumniContact[member.name].email}`}>{alumniContact[member.name].email}</a></p><EducationList education={member.education} /></div>
-        </article>)}
+      <div className="member-directory alumni-directory">
+        {alumni.map(member => <MemberRow key={member.name} {...member} {...alumniContact[member.name]} />)}
       </div>
     </section>
   </>;
