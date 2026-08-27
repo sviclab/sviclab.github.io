@@ -1,3 +1,26 @@
-import type{Metadata}from'next';import data from'../../data/achievements.json';import{domesticTitles}from'../../data/domesticTitles';import{domesticJournals}from'../../data/domesticJournals';import{publicationAuthors}from'../../data/publicationAuthors';import PageHero from'../components/PageHero';import PublicationExplorer from'../components/PublicationExplorer';
-export const metadata:Metadata={title:'Publications | SViC Lab',description:'International and domestic journal articles from SViC Lab.'};
-export default function Page(){const international=data.publications.filter(p=>p.section==='international').map(p=>({...p,authors:publicationAuthors[p.id]}));const domestic=data.publications.filter(p=>p.section==='domestic').map(p=>({...p,title:domesticTitles[p.number]||p.title,journal:domesticJournals[p.journal]||p.journal,authors:publicationAuthors[p.id]}));return <><PageHero eyebrow="Publications" title="Journal Articles" description="International and domestic journal articles are listed separately. Indexing status and article links are shown for each record."/><section className="content-section page-width"><div className="section-title"><h2>International journals</h2><p>{international.length} records</p></div><PublicationExplorer publications={international}/><div className="section-title section-break"><h2>Domestic journals</h2><p>{domestic.length} records · English titles and journal names</p></div><PublicationExplorer publications={domestic}/></section></>}
+import type { Metadata } from 'next';
+import data from '../../data/achievements.json';
+import { domesticJournals } from '../../data/domesticJournals';
+import { domesticTitles } from '../../data/domesticTitles';
+import { publicationAuthors } from '../../data/publicationAuthors';
+import PageHero from '../components/PageHero';
+import PublicationExplorer from '../components/PublicationExplorer';
+
+export const metadata: Metadata = { title: 'Publications | SViC Lab', description: 'International and domestic journal articles from SViC Lab.' };
+
+export default function Page() {
+  const publications = data.publications.map(publication => ({
+    ...publication,
+    title: publication.section === 'domestic' ? domesticTitles[publication.number] || publication.title : publication.title,
+    journal: publication.section === 'domestic' ? domesticJournals[publication.journal] || publication.journal : publication.journal,
+    authors: publicationAuthors[publication.id],
+  })).sort((a, b) => (b.year || 0) - (a.year || 0) || b.id.localeCompare(a.id));
+
+  return <>
+    <PageHero eyebrow="Publications" title="Journal Articles" description="International and domestic journal articles, with indexing status and links to the article record." />
+    <section className="content-section page-width">
+      <div className="section-title"><h2>Journal articles</h2></div>
+      <PublicationExplorer publications={publications} />
+    </section>
+  </>;
+}

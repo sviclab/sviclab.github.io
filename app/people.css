@@ -56,7 +56,26 @@
 }
 
 .alumni-list article {
-  grid-template-columns: 1fr;
+  grid-template-columns: 108px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.alumni-list article > img {
+  width: 108px;
+  height: 138px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
+.member-email {
+  margin: 3px 0 0 !important;
+  color: var(--muted);
+  font-size: 12px !important;
+}
+
+.member-email a:hover {
+  color: var(--ink);
 }
 
 .thesis-entry {
@@ -146,6 +165,14 @@
 }
 
 @media (max-width: 800px) {
+  .alumni-list article {
+    grid-template-columns: 92px 1fr;
+  }
+
+  .alumni-list article > img {
+    width: 92px;
+    height: 118px;
+  }
   .profile {
     grid-template-columns: 92px 1fr;
     gap: 16px;

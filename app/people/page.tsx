@@ -6,10 +6,11 @@ export const metadata: Metadata = { title: 'People | SViC Lab' };
 type Thesis = { kind: 'Thesis' | 'Dissertation'; title: string; url: string };
 type Education = { degree: string; thesis?: Thesis };
 
-const current: { image: string; name: string; education: Education[] }[] = [
+const current: { image: string; name: string; email: string; education: Education[] }[] = [
   {
     image: '/assets/yi-seop-shin.jpg',
     name: 'Yi-Seop Shin',
+    email: 'yiseopshin@gmail.com',
     education: [
       { degree: 'B.S., Architectural Engineering, University of Seoul' },
       { degree: 'M.S., Architectural Engineering, University of Seoul (2023)', thesis: { kind: 'Thesis', title: 'Seismic Retrofit Using Vibration Mode Conversion of Existing Low-rise Buildings', url: 'https://www.dcollection.net/handler/uos/000000034199' } },
@@ -19,6 +20,7 @@ const current: { image: string; name: string; education: Education[] }[] = [
   {
     image: '/assets/hyun-go.jpg',
     name: 'Hyun Go',
+    email: 'gohyun2000@gmail.com',
     education: [
       { degree: 'B.S., Architectural Engineering, University of Seoul' },
       { degree: 'M.S., Architectural Engineering, University of Seoul (2025)', thesis: { kind: 'Thesis', title: 'Seismic Risk of Pipeline Supporting CBFs Designed According to Different Seismic Design Requirements', url: 'https://www.dcollection.net/handler/uos/000000036091' } },
@@ -28,6 +30,7 @@ const current: { image: string; name: string; education: Education[] }[] = [
   {
     image: '/assets/dong-wan-kim.jpg',
     name: 'Dong-Wan Kim',
+    email: 'dongwan3390@gmail.com',
     education: [
       { degree: 'B.S., Architectural Engineering, University of Seoul (2024)' },
       { degree: 'M.S. Student, Architectural Engineering, University of Seoul (2024–)' },
@@ -69,6 +72,18 @@ const alumni: { name: string; education: Education[] }[] = [
   })),
 ];
 
+const alumniContact: Record<string, { email: string; image: string }> = {
+  'Kyung-Suk Choi': { email: 'cksdoo@gmail.com', image: 'https://lh3.googleusercontent.com/9BM-vors5334qqx-hvV7bFn0Gev_TOF9CdHcp2VdIToETL9yEnTarV2k5nQBA6HqCKW8VHaueM-7J_ovYbo_H0yvW68mVGWWDSL5BXdm38FAaqabpp3h=w800' },
+  'Dong-Hyeon Shin': { email: 'thymos19@gmail.com', image: 'https://lh3.googleusercontent.com/WyxZhXDuwHQB6ZEmjlQfQUgjBA2O5uSuvDitkxqHy19_w8vWIitkW7aCaIC3J0NCTWjvUZY_RnBe30MkGGmzNKvtRKNjk-wytmAoj68HmbXi2l-CUmv1das=w800' },
+  'Jin-Young Park': { email: 'jyp6727@gmail.com', image: '/assets/member-placeholder.png' },
+  'Seung-Won Lee': { email: 'swon0313@naver.com', image: '/assets/member-placeholder.png' },
+  'Saemee Jun': { email: 'saemee.jun@gmail.com', image: '/assets/member-placeholder.png' },
+  'Ji-Wook Mauk': { email: 'ahrwldnr@gmail.com', image: '/assets/member-placeholder.png' },
+  'Suk-Jae Hong': { email: 'ghd_jh@naver.com', image: '/assets/member-placeholder.png' },
+  'Jeong-Mo Hong': { email: 'gabrielhong91@gmail.com', image: '/assets/member-placeholder.png' },
+  'Chan-Woong Moon': { email: 'cksdnd630@gmail.com', image: '/assets/member-placeholder.png' },
+};
+
 function ThesisEntry({ thesis }: { thesis: Thesis }) {
   return <div className="thesis-entry">
     <p><span>{thesis.kind}.</span> <em>{thesis.title}</em></p>
@@ -95,13 +110,13 @@ export default function Page() {
           <p className="eyebrow">Professor</p>
           <h2>Hyung-Joon Kim</h2>
           <p>Professor, Department of Architectural Engineering, University of Seoul</p>
+          <p className="member-email"><a href="mailto:hyungjoonkim@uos.ac.kr">hyungjoonkim@uos.ac.kr</a></p>
           <EducationList education={[
             { degree: 'B.S., Architectural Engineering, Hanyang University' },
             { degree: 'M.S., Architectural Engineering, Hanyang University' },
             { degree: 'Ph.D., Civil Engineering, University of Toronto (2008)', thesis: { kind: 'Dissertation', title: 'Self-centering steel moment-resisting frames with energy dissipating systems', url: 'https://utoronto.scholaris.ca/items/1412ce8e-00c7-4f07-a9a1-97cb522356ef' } },
           ]} />
           <div className="profile-links">
-            <a href="mailto:hyungjoonkim@uos.ac.kr">Email</a>
             <a href="https://orcid.org/0000-0002-4637-1558" target="_blank" rel="noreferrer">ORCID</a>
             <a href="https://www.scopus.com/authid/detail.uri?authorId=52164005000" target="_blank" rel="noreferrer">SCOPUS</a>
           </div>
@@ -112,13 +127,16 @@ export default function Page() {
       <div className="people-grid">
         {current.map(member => <article className="person-card" key={member.name}>
           <img src={member.image} alt={member.name} />
-          <div><h3>{member.name}</h3><EducationList education={member.education} /></div>
+          <div><h3>{member.name}</h3><p className="member-email"><a href={`mailto:${member.email}`}>{member.email}</a></p><EducationList education={member.education} /></div>
         </article>)}
       </div>
 
       <div className="section-title section-break"><h2>Alumni</h2><p>{alumni.length} members</p></div>
       <div className="alumni-list">
-        {alumni.map(member => <article key={member.name}><div><h3>{member.name}</h3><EducationList education={member.education} /></div></article>)}
+        {alumni.map(member => <article key={member.name}>
+          <img src={alumniContact[member.name].image} alt={member.name} />
+          <div><h3>{member.name}</h3><p className="member-email"><a href={`mailto:${alumniContact[member.name].email}`}>{alumniContact[member.name].email}</a></p><EducationList education={member.education} /></div>
+        </article>)}
       </div>
     </section>
   </>;
