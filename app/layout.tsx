@@ -5,6 +5,7 @@ import './globals.css';
 import './theme.css';
 import './people.css';
 import './dark.css';
+import './academic.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://sviclab.github.io'),

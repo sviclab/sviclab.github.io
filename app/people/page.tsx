@@ -70,7 +70,7 @@ export default function Page() {
             <li>
               Ph.D., Civil Engineering, University of Toronto (2008)
               <a className="thesis-link" href="https://utoronto.scholaris.ca/items/1412ce8e-00c7-4f07-a9a1-97cb522356ef" target="_blank" rel="noreferrer">
-                Ph.D. thesis · Self-centering steel moment-resisting frames with energy dissipating systems ↗
+                Dissertation · Self-centering steel moment-resisting frames with energy dissipating systems ↗
               </a>
             </li>
           </ul>
@@ -92,7 +92,7 @@ export default function Page() {
               {member.degrees.map(degree => <li key={degree}>
                 {degree}
                 {member.thesis && degree.startsWith('M.S.,') && <a className="thesis-link" href={member.url} target="_blank" rel="noreferrer">
-                  M.S. thesis · {member.thesis} ↗
+                  Thesis · {member.thesis} ↗
                 </a>}
               </li>)}
             </ul>
@@ -111,7 +111,7 @@ export default function Page() {
                 {degrees.map((degree, index) => <li key={degree}>
                   {formatDegree(degree)}
                   {index === degrees.length - 1 && <a className="thesis-link" href={alumnus[3]} target="_blank" rel="noreferrer">
-                    {degree.startsWith('Ph.D.') ? 'Ph.D.' : 'M.S.'} thesis · {alumnus[2]} ↗
+                    {degree.startsWith('Ph.D.') ? 'Dissertation' : 'Thesis'} · {alumnus[2]} ↗
                   </a>}
                 </li>)}
               </ul>
