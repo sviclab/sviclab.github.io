@@ -4,6 +4,23 @@
   align-items: start;
 }
 
+.people-grid {
+  grid-template-columns: 1fr;
+}
+
+.profile {
+  grid-template-columns: 108px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.profile > img {
+  width: 108px;
+  height: 138px;
+  aspect-ratio: auto;
+  object-fit: cover;
+}
+
 .person-card > img {
   width: 108px;
   height: 138px;
@@ -38,6 +55,10 @@
   color: var(--ink);
 }
 
+.alumni-list article {
+  grid-template-columns: 1fr;
+}
+
 .patent-record {
   grid-template-columns: 100px 88px 1fr;
   align-items: start;
@@ -60,6 +81,16 @@
 }
 
 @media (max-width: 800px) {
+  .profile {
+    grid-template-columns: 92px 1fr;
+    gap: 16px;
+  }
+
+  .profile > img {
+    width: 92px;
+    height: 118px;
+  }
+
   .person-card {
     grid-template-columns: 92px 1fr;
   }

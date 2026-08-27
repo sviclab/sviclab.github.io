@@ -8,6 +8,7 @@ const current = [
     image: '/assets/yi-seop-shin.jpg',
     name: 'Yi-Seop Shin',
     degrees: [
+      'B.S., Architectural Engineering, University of Seoul',
       'M.S., Architectural Engineering, University of Seoul (2023)',
       'Ph.D. Candidate, Architectural Engineering, University of Seoul (2023–)',
     ],
@@ -18,6 +19,7 @@ const current = [
     image: '/assets/hyun-go.jpg',
     name: 'Hyun Go',
     degrees: [
+      'B.S., Architectural Engineering, University of Seoul',
       'M.S., Architectural Engineering, University of Seoul (2025)',
       'Ph.D. Student, Architectural Engineering, University of Seoul (2025–)',
     ],
@@ -45,6 +47,12 @@ const alumni = [
   ['Jeong-Mo Hong', 'M.S. (2018)', 'Macro-Modeling of Unreinforced Masonry Walls for Dynamic Analysis', 'https://www.dcollection.net/handler/uos/000000030246'],
   ['Chan-Woong Moon', 'M.S. (2019)', 'Hysteretic Behavior of Steel Bracing Member Using Refined Physical Theory Model', 'https://www.dcollection.net/handler/uos/000000030668'],
 ];
+
+function formatDegree(degree: string) {
+  const match = degree.match(/^(B\.S\.|M\.S\.|Ph\.D\.)(?: \((\d{4})\))?$/);
+  if (!match) return degree;
+  return `${match[1]}, Architectural Engineering, University of Seoul${match[2] ? ` (${match[2]})` : ''}`;
+}
 
 export default function Page() {
   return <>
@@ -94,10 +102,22 @@ export default function Page() {
 
       <div className="section-title section-break"><h2>Alumni</h2><p>{alumni.length} members</p></div>
       <div className="alumni-list">
-        {alumni.map(alumnus => <article key={alumnus[0]}>
-          <div><h3>{alumnus[0]}</h3><p>{alumnus[1]} · Architectural Engineering, University of Seoul</p></div>
-          <a href={alumnus[3]} target="_blank" rel="noreferrer">Thesis · {alumnus[2]} ↗</a>
-        </article>)}
+        {alumni.map(alumnus => {
+          const degrees = ['B.S.', ...alumnus[1].split(';').map(degree => degree.trim())];
+          return <article key={alumnus[0]}>
+            <div>
+              <h3>{alumnus[0]}</h3>
+              <ul className="member-degrees">
+                {degrees.map((degree, index) => <li key={degree}>
+                  {formatDegree(degree)}
+                  {index === degrees.length - 1 && <a className="thesis-link" href={alumnus[3]} target="_blank" rel="noreferrer">
+                    {degree.startsWith('Ph.D.') ? 'Ph.D.' : 'M.S.'} thesis · {alumnus[2]} ↗
+                  </a>}
+                </li>)}
+              </ul>
+            </div>
+          </article>;
+        })}
       </div>
     </section>
   </>;
