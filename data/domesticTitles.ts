@@ -12,7 +12,7 @@ export const domesticTitles:Record<number,string>={
 26:'An Analysis of Factors Influencing Insulation Performance of Inorganic Autoclaved Lightweight Concrete Sandwich Wall Panels Using Shear Connectors',
 25:'Risk-Targeted Seismic Performance of Steel Ordinary Concentrically Braced Frames Considering Seismic Hazard',
 24:'Investigation on Effective Peak Ground Accelerations Based on the Gyeongju Earthquake Records',
-23:'Effects of Analytical Models on the Seismic Response of Modular Structures',
+23:'Influence of Analytical Models on the Seismic Response of Modular Structures',
 22:'Prediction of Spectral Acceleration Response Based on the Statistical Analyses of Earthquake Records in Korea',
 21:'Cyclic Behavior of Thermal Bridge Breaker Systems Embedded in Wall–Slab Connections',
 20:'Uncertainty Analysis of Factors Affecting the Collapse Performance of Steel Moment Frames',
@@ -27,12 +27,12 @@ export const domesticTitles:Record<number,string>={
 11:'Seismic Behavior of Reinforced Concrete Moment Frames Retrofitted by Toggle Bracing System with High Density Friction Damper',
 10:'Collapse Performance of Steel Intermediate Moment Frames I',
 9:'Collapse Performance of Steel Intermediate Moment Frames II',
-8:'Collapse Performance Evaluation of Steel Intermediate Moment Frames through Nonlinear Incremental Dynamic Analysis',
+8:'Collapse Capacity Evaluation of Steel Intermediate Moment Frames Using Incremental Dynamic Analysis',
 7:'A Study on Evaluation of Floor Response Spectrum for Seismic Design of Non-Structural Components',
 6:'Experimental Study the on Hysteretic Characteristics of Rotational Friction Energy Dissipative Devices',
 5:'Optimization of Compression Plate Geometry for Thermal Bridge Breaker Systems Using Finite Element Analysis',
 4:'Review and Analysis of Patented Thermal Bridge Breaker Technologies for Green Buildings',
-3:'Seismic Performance Evaluation of Unreinforced Masonry Buildings Using Incremental Dynamic Analysis',
+3:'Seismic Performance Assessment of Unreinforced Masonry Wall Buildings Using Incremental Dynamic Analysis',
 2:'A Study on Directions of Effective Architectural Engineering Education',
 1:'Comparison of Seismic Performance between Self-Centering SDOF Systems with Viscous Dampers and Elasto-Plastic SDOF Systems'
 };
