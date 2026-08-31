@@ -11,7 +11,7 @@ export const domesticTitles:Record<number,string>={
 27:'Ground-Motion Prediction Equation for Spectral Acceleration in Low-to-Moderate Seismicity Regions Using Instrumental Earthquake Records',
 26:'Factors Affecting the Thermal Performance of Lightweight Foamed Concrete Sandwich Exterior Wall Panels with Shear Connectors',
 25:'Risk-Targeted Seismic Performance of Steel Ordinary Concentrically Braced Frames Considering Seismic Hazard',
-24:'Analysis of Effective Peak Ground Acceleration Based on Gyeongju Earthquake Records',
+24:'Investigation on Effective Peak Ground Accelerations Based on the Gyeongju Earthquake Records',
 23:'Effects of Analytical Models on the Seismic Response of Modular Structures',
 22:'Prediction of Spectral Acceleration Response Based on Statistical Analysis of Korean Earthquake Records',
 21:'Cyclic Behavior of Thermal Bridge Breaker Systems Embedded in Wall–Slab Connections',
