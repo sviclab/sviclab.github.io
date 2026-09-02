@@ -7,6 +7,7 @@ export const internationalJournals: Record<string, string> = {
   'INTERNATIONAL JOURNAL OF CIVIL ENGINEERING': 'International Journal of Civil Engineering',
   'International Journal of High-Rise Buildings': 'International Journal of High-Rise Buildings',
   'International Journal of STEEL STRUCTURES': 'International Journal of Steel Structures',
+  'INTERNATIONAL JOURNAL OF STEEL STRUCTURES': 'International Journal of Steel Structures',
   'IOP Conference Series: Materials Science and Engineering': 'IOP Conference Series: Materials Science and Engineering',
   'Journal of Building Engineering': 'Journal of Building Engineering',
   'JOURNAL OF CONSTRUCTIONAL STEEL RESEARCH': 'Journal of Constructional Steel Research',
