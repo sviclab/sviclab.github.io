@@ -4,6 +4,8 @@ import { domesticJournals } from '../../data/domesticJournals';
 import { domesticTitles } from '../../data/domesticTitles';
 import { internationalJournals } from '../../data/internationalJournals';
 import { publicationAuthors } from '../../data/publicationAuthors';
+import { getConferenceRecords } from '../../data/conferenceRecords';
+import ConferenceExplorer from '../components/ConferenceExplorer';
 import PageHero from '../components/PageHero';
 import PublicationExplorer from '../components/PublicationExplorer';
 
@@ -19,6 +21,7 @@ const conferencePaperIds = new Set([
 ]);
 
 export default function Page() {
+  const conferences = getConferenceRecords();
   const publications = data.publications.filter(publication => !conferencePaperIds.has(publication.id)).map(publication => ({
     ...publication,
     title: publication.section === 'domestic' ? domesticTitles[publication.number] || publication.title : publication.title,
@@ -27,10 +30,16 @@ export default function Page() {
   })).sort((a, b) => (b.year || 0) - (a.year || 0) || b.id.localeCompare(a.id));
 
   return <>
-    <PageHero eyebrow="Publications" title="Journal Articles" description="International and domestic journal articles, with indexing status and links to the article record." />
-    <section className="content-section page-width">
-      <div className="section-title"><h2>Journal articles</h2></div>
-      <PublicationExplorer publications={publications} />
+    <PageHero eyebrow="Publications" title="Research Outputs" description="Journal articles and conference contributions." />
+    <section className="content-section page-width publication-groups">
+      <details className="publication-group">
+        <summary><span>Journal Articles</span><small>{publications.length} records</small></summary>
+        <div className="publication-group-content"><PublicationExplorer publications={publications} /></div>
+      </details>
+      <details className="publication-group" id="conferences">
+        <summary><span>Conferences</span><small>{conferences.length} records</small></summary>
+        <div className="publication-group-content"><ConferenceExplorer records={conferences} /></div>
+      </details>
     </section>
   </>;
 }

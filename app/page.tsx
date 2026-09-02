@@ -3,7 +3,7 @@ import data from '../data/achievements.json';
 
 const stats = [
   ['Journal articles', data.counts.publications, '/publications'],
-  ['Conference activities', data.counts.conferences, '/conferences'],
+  ['Conference activities', data.counts.conferences, '/publications'],
   ['Project records', data.counts.projects, '/projects'],
   ['Registered patents', data.counts.patents, '/patents'],
 ] as const;
