@@ -128,6 +128,20 @@
   font-size: 16px;
 }
 
+.record-year {
+  margin-top: 14px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.record-list > .record-year:first-child {
+  margin-top: 0;
+  border-top: 0;
+}
+
 .journal-toolbar {
   display: flex;
   justify-content: space-between;

@@ -33,15 +33,25 @@ function normalizedTitle(title:string){
   return cleanTitle(title).replace(/[\s·ㆍ?]/g,'');
 }
 
-const multiYearTitles=new Set([
-  '강선을이용한횡력저항모듈러코어시스템개발(총괄:모듈러건축중고층화및생산성향상기술개발)',
-  '조적/칸막이벽체내진성능향상기술및비구조요소표준내진상세개발',
-  '철골가새골조의붕괴확률기반지진위험도평가',
+function canonicalTitle(title:string){
+  const normalized=normalizedTitle(title);
+  if(normalized.startsWith('강선을이용한횡력저항모듈러코어시스템개발'))return '강선을이용한횡력저항모듈러코어시스템개발';
+  if(normalized.startsWith('화성봉담(2)S1블록성능기반설계검증-건축구조분야'))return '화성봉담(2)S1블록성능기반설계검증-건축구조분야';
+  return normalized;
+}
+
+const verifiedPeriods=new Map<string,[string,string]>([
+  ['강선을이용한횡력저항모듈러코어시스템개발',['2015-01-01','2022-12-31']],
+  ['조적/칸막이벽체내진성능향상기술및비구조요소표준내진상세개발',['2018-04-01','2021-12-31']],
+  ['철골가새골조의붕괴확률기반지진위험도평가',['2016-06-01','2019-06-30']],
+  ['화성봉담(2)S1블록성능기반설계검증-건축구조분야',['2017-10-17','2018-10-31']],
+  ['비고정형의료기기의지진대응력향상을위한기술개발및실증',['2025-07-01','2027-03-31']],
+  ['메쉬몰데크시스템의구조성능에관한해석적평가',['2025-10-01','2026-01-31']],
 ]);
 
 function projectKey(project:Project){
-  const title=normalizedTitle(project.title);
-  if(multiYearTitles.has(title))return title;
+  const title=canonicalTitle(project.title);
+  if(verifiedPeriods.has(title))return title;
   if(project.overallStartDate&&project.overallEndDate){
     return `${project.overallStartDate}|${project.overallEndDate}`;
   }
@@ -51,8 +61,9 @@ function projectKey(project:Project){
 const uniqueProjects=[...data.projects.reduce((projects,project)=>{
   const key=projectKey(project);
   const existing=projects.get(key);
-  const start=project.overallStartDate||project.startDate;
-  const end=project.overallEndDate||project.endDate;
+  const verified=verifiedPeriods.get(canonicalTitle(project.title));
+  const start=verified?.[0]||project.overallStartDate||project.startDate;
+  const end=verified?.[1]||project.overallEndDate||project.endDate;
   if(!existing){
     projects.set(key,{...project,displayStart:start,displayEnd:end});
   }else{
@@ -64,11 +75,14 @@ const uniqueProjects=[...data.projects.reduce((projects,project)=>{
     });
   }
   return projects;
-},new Map<string,ProjectSummary>()).values()];
+},new Map<string,ProjectSummary>()).values()].sort((a,b)=>
+  b.displayStart.localeCompare(a.displayStart)||b.displayEnd.localeCompare(a.displayEnd)||cleanTitle(a.title).localeCompare(cleanTitle(b.title))
+);
 
 export default function Page(){
   const records=uniqueProjects.map((project,index)=>({
     id:`p-${index}`,
+    year:Number(project.displayStart.slice(0,4))||0,
     side:[project.displayStart,project.displayEnd].filter(Boolean).join(' – '),
     title:cleanTitle(project.title),
     meta:[project.funder,project.agency].filter((value,i,values)=>value&&values.indexOf(value)===i).join(' · '),
