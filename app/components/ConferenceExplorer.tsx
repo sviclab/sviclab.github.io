@@ -8,6 +8,8 @@ type ConferenceRecord = {
   title: string;
   meta: string;
   group: 'International' | 'Domestic';
+  link: string;
+  linkLabel: 'Paper' | 'Conference';
 };
 
 export default function ConferenceExplorer({ records }: { records: ConferenceRecord[] }) {
@@ -31,6 +33,7 @@ export default function ConferenceExplorer({ records }: { records: ConferenceRec
           <div>
             <h3>{record.title}</h3>
             <p className="record-meta">{record.meta} <span className="badge publication-index">{record.group}</span></p>
+            <a className="doi-link" href={record.link} target="_blank" rel="noreferrer">{record.linkLabel}</a>
           </div>
         </article>;
       })}
