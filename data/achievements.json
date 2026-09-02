@@ -1,10 +1,10 @@
 {
-  "sourceUpdated": "2026-08-27",
+  "sourceUpdated": "2026-09-02",
   "counts": {
     "theses": 2,
-    "publications": 71,
+    "publications": 72,
     "internationalPublications": 35,
-    "domesticPublications": 36,
+    "domesticPublications": 37,
     "patents": 29,
     "conferences": 105,
     "internationalConferences": 27,
@@ -762,6 +762,24 @@
       "doi": "10.1061/(ASCE)0733-9445(2008)134:1(96)",
       "link": "https://doi.org/10.1061/(ASCE)0733-9445(2008)134:1(96)",
       "linkLabel": "DOI 10.1061/(ASCE)0733-9445(2008)134:1(96)"
+    },
+    {
+      "id": "domestic-37",
+      "number": 37,
+      "section": "domestic",
+      "year": 2026,
+      "title": "Nonlinear Higher-Mode Effects in Torsionally Coupled Low-Rise Buildings",
+      "journal": "한국전산구조공학회논문집",
+      "publisher": "한국전산구조공학회",
+      "index": "SCOPUS",
+      "authorCount": "2",
+      "role": "교신저자",
+      "issn": "1229-3059",
+      "funder": "",
+      "program": "",
+      "doi": "10.7734/COSEIK.2026.39.4.255",
+      "link": "https://doi.org/10.7734/COSEIK.2026.39.4.255",
+      "linkLabel": "DOI"
     },
     {
       "id": "domestic-36",

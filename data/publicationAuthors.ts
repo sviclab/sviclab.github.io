@@ -1,4 +1,5 @@
 export const publicationAuthors: Record<string, string> = {
+  'domestic-37': 'Yi-Seop Shin, Hyung-Joon Kim',
   'international-41': 'Hyung-Joon Kim, Dong-Hyeon Shin',
   'international-40': 'Hyun Go, Hyung-Joon Kim',
   'international-39': 'Yi-Seop Shin, Hyung-Joon Kim',

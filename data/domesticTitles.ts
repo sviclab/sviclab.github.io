@@ -1,4 +1,5 @@
 export const domesticTitles:Record<number,string>={
+37:'Nonlinear Higher-Mode Effects in Torsionally Coupled Low-Rise Buildings',
 36:'Seismic Response of Medical Beds due to Collision with Adjacent Objects',
 35:'Analysis of Influential Factors on the Evaluation of Regional Seismic Collapse Risk',
 34:'Seismic Retrofit Strategy Reducing Torsion-Induced Higher Mode Effects of Torsionally-Coupled Low-Rise Buildings',
