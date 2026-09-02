@@ -121,7 +121,7 @@ function MemberRow({ image, name, email, education, role }: { image?: string; na
 
 export default function Page() {
   return <>
-    <PageHero eyebrow="People" title="Members" description="Current members and alumni of the Structural Vibration Control Laboratory." />
+    <PageHero title="People" description="Current members and alumni of the Structural Vibration Control Laboratory." />
     <section className="content-section page-width">
       <div className="section-title"><h2>Faculty</h2></div>
       <div className="member-directory faculty-directory">
@@ -142,6 +142,11 @@ export default function Page() {
             { degree: 'M.S., Architectural Engineering, Hanyang University' },
             { degree: 'Ph.D., Civil Engineering, University of Toronto (2008)', thesis: { kind: 'Dissertation', title: 'Self-centering steel moment-resisting frames with energy dissipating systems', url: 'https://utoronto.scholaris.ca/items/1412ce8e-00c7-4f07-a9a1-97cb522356ef' } },
           ]} />
+          <div className="faculty-awards">
+            <h4>Awards</h4>
+            <p><span>2013</span> Best Paper Award, International Conference on Mechanical Engineering, Materials Science and Civil Engineering</p>
+            <p className="award-work"><em>Comparative Seismic Risk Analysis of Existing Low-Rise RC Buildings Retrofitted by Metallic Energy Dissipating Devices</em></p>
+          </div>
         </article>
       </div>
 

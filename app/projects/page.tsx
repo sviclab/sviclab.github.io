@@ -93,8 +93,7 @@ export default function Page(){
 
   return <>
     <PageHero
-      eyebrow="Projects"
-      title="Research Projects"
+      title="Projects"
       description={`${records.length} research projects supported by government, public-sector, and industry partners. Multi-year projects are listed once using their full project periods.`}
     />
     <section className="content-section page-width">

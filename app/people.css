@@ -80,6 +80,39 @@
   color: var(--ink);
 }
 
+.faculty-awards {
+  grid-column: 3;
+  margin-top: 3px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.faculty-awards h4 {
+  margin: 0 0 7px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.faculty-awards p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.faculty-awards p span {
+  margin-right: 8px;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.faculty-awards .award-work {
+  margin-top: 3px;
+  color: var(--ink);
+}
+
 .thesis-entry {
   margin-top: 7px;
 }
@@ -205,6 +238,10 @@
   .member-row > .member-degrees {
     grid-column: 1 / -1;
     margin-top: 0;
+  }
+
+  .faculty-awards {
+    grid-column: 1 / -1;
   }
 
   .patent-record {

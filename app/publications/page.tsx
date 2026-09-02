@@ -30,7 +30,7 @@ export default function Page() {
   })).sort((a, b) => (b.year || 0) - (a.year || 0) || b.id.localeCompare(a.id));
 
   return <>
-    <PageHero eyebrow="Publications" title="Research Outputs" description="Journal articles and conference contributions." />
+    <PageHero title="Publications" description="Journal articles and conference contributions." />
     <section className="content-section page-width publication-groups">
       <details className="publication-group">
         <summary><span>Journal Articles</span><small>{publications.length} records</small></summary>
