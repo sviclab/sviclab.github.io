@@ -9,7 +9,7 @@ type ConferenceRecord = {
   meta: string;
   group: 'International' | 'Domestic';
   link: string;
-  linkLabel: 'Paper' | 'Conference';
+  linkLabel: 'Paper' | 'Official site';
 };
 
 export default function ConferenceExplorer({ records }: { records: ConferenceRecord[] }) {
