@@ -1245,9 +1245,9 @@
       "issn": "1738-2424",
       "funder": "소방방재청",
       "program": "소방방재청 지진및지진해일 피해저감 기술개발사업",
-      "doi": "",
-      "link": "https://www.google.com/search?q=site%3Akci.go.kr%20%22%EC%B2%A0%EA%B3%A8%EC%A4%91%EA%B0%84%EB%AA%A8%EB%A9%98%ED%8A%B8%EA%B3%A8%EC%A1%B0%EC%9D%98%20%EB%B6%95%EA%B4%B4%EC%84%B1%EB%8A%A5%E2%85%A1%22",
-      "linkLabel": "KCI 공식 기록 검색 · DOI 미확인"
+      "doi": "10.9798/KOSHAM.2014.14.2.245",
+      "link": "https://doi.org/10.9798/KOSHAM.2014.14.2.245",
+      "linkLabel": "DOI"
     },
     {
       "id": "domestic-10",
@@ -1263,9 +1263,9 @@
       "issn": "1738-2424",
       "funder": "소방방재청",
       "program": "소방방재청 지진및지진해일 피해저감 기술개발사업",
-      "doi": "",
-      "link": "https://www.google.com/search?q=site%3Akci.go.kr%20%22%EC%B2%A0%EA%B3%A8%EC%A4%91%EA%B0%84%EB%AA%A8%EB%A9%98%ED%8A%B8%EA%B3%A8%EC%A1%B0%EC%9D%98%20%EB%B6%95%EA%B4%B4%EC%84%B1%EB%8A%A5%20I%22",
-      "linkLabel": "KCI 공식 기록 검색 · DOI 미확인"
+      "doi": "10.9798/KOSHAM.2014.14.2.233",
+      "link": "https://doi.org/10.9798/KOSHAM.2014.14.2.233",
+      "linkLabel": "DOI"
     },
     {
       "id": "domestic-8",
